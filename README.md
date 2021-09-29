@@ -32,9 +32,13 @@ The stylesheet loaded by the theme needs to be configured to utilise CSS variabl
 
 Choose fonts that have been uploaded to the media library. Orchard Core by default won't allow font files to be uploaded to the media library so you'll need to ensure that [Orchard Core is configured](https://docs.orchardcore.net/en/dev/docs/reference/modules/Media/#configuration) to accept any extensions for font files that will be uploaded.
 
-### External Font
+### External CSS Font
 
-Specify a URL should be loaded via `@import`. Ideal for specifying fonts that are loaded from services like [Adobe Fonts](https://fonts.adobe.com/) or [Google Fonts](https://fonts.google.com/).
+Specify a URL to a CSS file that is loaded via `@import`. Ideal for specifying fonts that are loaded from services like [Adobe Fonts](https://fonts.adobe.com/) or [Google Fonts](https://fonts.google.com/).
+
+### External JS Font
+
+Specify a JavaScript snippet that will handle loading fonts on the page. Ideal for specifying fonts that are loaded from services like [Adobe Fonts](https://fonts.adobe.com/) or [Google Fonts](https://fonts.google.com/).
 
 ## Packaging
 
