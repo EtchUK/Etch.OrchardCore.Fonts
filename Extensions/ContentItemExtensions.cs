@@ -1,4 +1,5 @@
-﻿using Etch.OrchardCore.Fonts.Models;
+﻿using Etch.OrchardCore.Fields.Code.Fields;
+using Etch.OrchardCore.Fonts.Models;
 using OrchardCore.ContentFields.Fields;
 using OrchardCore.ContentManagement;
 using OrchardCore.Media.Fields;
@@ -22,21 +23,39 @@ namespace Etch.OrchardCore.Fonts.Extensions
             return part.Get<TextField>("Rule")?.Text;
         }
 
-        public static ExternalFont ToExternalFont(this ContentItem contentItem)
+        public static ExternalCssFont ToExternalCssFont(this ContentItem contentItem)
         {
-            var part = contentItem.Get<ContentPart>("ExternalFont");
+            var part = contentItem.Get<ContentPart>("ExternalCssFont");
 
             if (part == null)
             {
                 return null;
             }
 
-            return new ExternalFont
+            return new ExternalCssFont
             {
                 Family = part.Get<TextField>("Family")?.Text,
                 Rule = part.Get<TextField>("Rule")?.Text,
                 Type = part.Get<TextField>("Type")?.Text,
                 Url = part.Get<TextField>("Url")?.Text
+            };
+        }
+
+        public static ExternalJsFont ToExternalJsFont(this ContentItem contentItem)
+        {
+            var part = contentItem.Get<ContentPart>("ExternalJsFont");
+
+            if (part == null)
+            {
+                return null;
+            }
+
+            return new ExternalJsFont
+            {
+                Family = part.Get<TextField>("Family")?.Text,
+                JavaScript = part.Get<CodeField>("JavaScript")?.Value,
+                Rule = part.Get<TextField>("Rule")?.Text,
+                Type = part.Get<TextField>("Type")?.Text
             };
         }
 

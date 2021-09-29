@@ -104,8 +104,11 @@ namespace Etch.OrchardCore.Fonts.Services
 
                 switch (font.ContentType)
                 {
-                    case "ExternalFont":
-                        RenderExternalFont(font);
+                    case "ExternalCssFont":
+                        RenderExternalCssFont(font);
+                        continue;
+                    case "ExternalJsFont":
+                        RenderExternalJsFont(font);
                         continue;
                     case "MediaLibraryFont":
                         RenderMediaLibraryFont(font);
@@ -116,9 +119,9 @@ namespace Etch.OrchardCore.Fonts.Services
             await next.Invoke();
         }
 
-        private void RenderExternalFont(ContentItem contentItem)
+        private void RenderExternalCssFont(ContentItem contentItem)
         {
-            var externalFont = contentItem.ToExternalFont();
+            var externalFont = contentItem.ToExternalCssFont();
 
             if (externalFont == null)
             {
@@ -133,7 +136,27 @@ namespace Etch.OrchardCore.Fonts.Services
             } 
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Failed to load external font");
+                _logger.LogError(ex, "Failed to load external CSS font");
+            }
+        }
+
+        private void RenderExternalJsFont(ContentItem contentItem)
+        {
+            var externalFont = contentItem.ToExternalJsFont();
+
+            if (externalFont == null)
+            {
+                return;
+            }
+
+            try
+            {
+                var html = new StringBuilder($"<script>{externalFont.JavaScript}</script><style>:root {{ --fontFamily{externalFont.Type}:{externalFont.Family}; }}</style>");
+                _resourceManager.RegisterStyle(new HtmlString(html.ToString()));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to load external JS font");
             }
         }
 

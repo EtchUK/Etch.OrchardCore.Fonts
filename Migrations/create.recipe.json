@@ -42,7 +42,7 @@
                 },
                 "BagPartSettings": {
                   "ContainedContentTypes": [
-                    "ExternalFont",
+                    "ExternalCssFont",
                     "MediaLibraryFont"
                   ]
                 },
@@ -74,19 +74,41 @@
           ]
         },
         {
-          "Name": "ExternalFont",
-          "DisplayName": "External Font",
+          "Name": "ExternalCssFont",
+          "DisplayName": "External CSS Font",
           "Settings": {
             "ContentTypeSettings": {},
             "FullTextAspectSettings": {},
             "Category": "Fonts",
-            "Description": "Load font files from an external URL (e.g. Google Fonts, Adobe Fonts).",
+            "Description": "Load font files from URL of an external CSS file (e.g. Google Fonts, Adobe Fonts).",
             "Icon": "external-link-square-alt"
           },
           "ContentTypePartDefinitionRecords": [
             {
-              "PartName": "ExternalFont",
-              "Name": "ExternalFont",
+              "PartName": "ExternalCssFont",
+              "Name": "ExternalCssFont",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ExternalJsFont",
+          "DisplayName": "External JS Font",
+          "Settings": {
+            "ContentTypeSettings": {},
+            "FullTextAspectSettings": {},
+            "Category": "Fonts",
+            "Description": "Load font files using a JavaScript snippet (e.g. Adobe Fonts).",
+            "Icon": "external-link-square-alt"
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "ExternalJsFont",
+              "Name": "ExternalJsFont",
               "Settings": {
                 "ContentTypePartSettings": {
                   "Position": "0"
@@ -221,7 +243,7 @@
           ]
         },
         {
-          "Name": "ExternalFont",
+          "Name": "ExternalCssFont",
           "Settings": {},
           "ContentPartFieldDefinitionRecords": [
             {
@@ -290,6 +312,75 @@
                   "DefaultValue": "Default"
                 },
                 "ContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ExternalJsFont",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Family",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Family"
+                },
+                "TextFieldSettings": {
+                  "Hint": "Name of the font family and any fallback fonts."
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "CodeField",
+              "Name": "JavaScript",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "JavaScript"
+                },
+                "CodeFieldSettings": {
+                  "Language": "javascript"
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Type",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Type",
+                  "Editor": "PredefinedList"
+                },
+                "TextFieldSettings": {
+                  "Hint": "Which variable the font should be applied to."
+                },
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "Default",
+                      "value": "Default"
+                    },
+                    {
+                      "name": "Heading",
+                      "value": "Heading"
+                    }
+                  ],
+                  "Editor": 1,
+                  "DefaultValue": "Default"
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Rule",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Rule"
+                }
               }
             }
           ]

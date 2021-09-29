@@ -2,7 +2,7 @@
 
 namespace Etch.OrchardCore.Fonts.Models
 {
-    public class ExternalFont
+    public class ExternalCssFont
     {
         public string Family { get; set; }
         public string Rule { get; set; }
