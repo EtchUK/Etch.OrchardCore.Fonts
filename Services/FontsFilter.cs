@@ -77,7 +77,7 @@ namespace Etch.OrchardCore.Fonts.Services
             var fontSettings = site.As<ContentItem>("FontSettings");
             var fonts = fontSettings.Get<BagPart>("Fonts");
 
-            if (!fonts.ContentItems.Any())
+            if (fonts == null || !fonts.ContentItems.Any())
             {
                 await next.Invoke();
                 return;
