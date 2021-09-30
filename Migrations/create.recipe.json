@@ -43,6 +43,7 @@
                 "BagPartSettings": {
                   "ContainedContentTypes": [
                     "ExternalCssFont",
+                    "ExternalJsFont",
                     "MediaLibraryFont"
                   ]
                 },
