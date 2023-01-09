@@ -5,6 +5,6 @@ using OrchardCore.Modules.Manifest;
     Category = "Content",
     Description = "Control which fonts are loaded based on conditions.",
     Name = "Fonts",
-    Version = "1.3.0",
+    Version = "$(VersionNumber)",
     Website = "https://etchuk.com"
 )]
