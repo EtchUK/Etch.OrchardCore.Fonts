@@ -7,5 +7,10 @@ using OrchardCore.Modules.Manifest;
     Name = "Fonts",
     Version = "$(VersionNumber)",
     Website = "https://etchuk.com",
-    Dependencies = new [] { "OrchardCore.CustomSettings" }
+    Dependencies = new [] {
+        "OrchardCore.ContentFields",
+        "OrchardCore.CustomSettings",
+        "OrchardCore.Flows",
+        "Etch.OrchardCore.Fields.CodeField"
+    }
 )]
