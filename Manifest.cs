@@ -6,5 +6,6 @@ using OrchardCore.Modules.Manifest;
     Description = "Control which fonts are loaded based on conditions.",
     Name = "Fonts",
     Version = "$(VersionNumber)",
-    Website = "https://etchuk.com"
+    Website = "https://etchuk.com",
+    Dependencies = new [] { "OrchardCore.CustomSettings" }
 )]
