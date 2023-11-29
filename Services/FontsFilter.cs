@@ -1,4 +1,4 @@
-﻿using Etch.OrchardCore.Fonts.Extensions;
+using Etch.OrchardCore.Fonts.Extensions;
 using Etch.OrchardCore.Fonts.Utilities;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
@@ -61,7 +61,6 @@ namespace Etch.OrchardCore.Fonts.Services
                 return;
             }
 
-
             // Even if the Admin attribute is not applied we might be using the admin theme, for instance in Login views.
             // In this case don't render Layers.
             var selectedTheme = (await _themeManager.GetThemeAsync())?.Id;
@@ -90,6 +89,11 @@ namespace Etch.OrchardCore.Fonts.Services
             foreach (var font in fonts.ContentItems)
             {
                 var rule = font.GetRule();
+
+                if (string.IsNullOrWhiteSpace(rule))
+                {
+                    continue;
+                } 
 
                 if (!rulesCache.TryGetValue(rule, out bool display))
                 {
