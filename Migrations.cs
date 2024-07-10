@@ -9,6 +9,7 @@ using OrchardCore.Data.Migration;
 using OrchardCore.Flows.Models;
 using OrchardCore.Media.Fields;
 using OrchardCore.Media.Settings;
+using System.Threading.Tasks;
 
 namespace Etch.OrchardCore.Fonts
 {
@@ -21,9 +22,9 @@ namespace Etch.OrchardCore.Fonts
             _contentDefinitionManager = contentDefinitionManager;
         }
 
-        public int Create()
+        public async Task<int> CreateAsync()
         {
-            _contentDefinitionManager.AlterTypeDefinition("FontSettings", builder => builder
+            await _contentDefinitionManager.AlterTypeDefinitionAsync("FontSettings", builder => builder
                 .DisplayedAs("Fonts")
                 .Stereotype("CustomSettings")
                 .WithPart("FontSettings")
@@ -38,7 +39,7 @@ namespace Etch.OrchardCore.Fonts
                 )
             );
 
-            _contentDefinitionManager.AlterTypeDefinition("MediaLibraryFont", builder => builder
+            await _contentDefinitionManager.AlterTypeDefinitionAsync("MediaLibraryFont", builder => builder
                 .DisplayedAs("Media Library Font")
                 .MergeSettings(JObject.FromObject(new
                 {
@@ -49,7 +50,7 @@ namespace Etch.OrchardCore.Fonts
                 .WithPart("MediaLibraryFont")
             );
 
-            _contentDefinitionManager.AlterTypeDefinition("ExternalCssFont", builder => builder
+            await _contentDefinitionManager.AlterTypeDefinitionAsync("ExternalCssFont", builder => builder
                 .DisplayedAs("External CSS Font")
                 .MergeSettings(JObject.FromObject(new
                 {
@@ -60,7 +61,7 @@ namespace Etch.OrchardCore.Fonts
                 .WithPart("ExternalCssFont")
             );
 
-            _contentDefinitionManager.AlterTypeDefinition("ExternalJsFont", builder => builder
+            await _contentDefinitionManager.AlterTypeDefinitionAsync("ExternalJsFont", builder => builder
                 .DisplayedAs("External JS Font")
                 .MergeSettings(JObject.FromObject(new
                 {
@@ -71,7 +72,7 @@ namespace Etch.OrchardCore.Fonts
                 .WithPart("ExternalJsFont")
             );
 
-            _contentDefinitionManager.AlterPartDefinition("MediaLibraryFont", builder => builder
+            await _contentDefinitionManager.AlterPartDefinitionAsync("MediaLibraryFont", builder => builder
                 .WithField("FontName", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Font Name")
@@ -168,7 +169,7 @@ namespace Etch.OrchardCore.Fonts
                 )
             );
 
-            _contentDefinitionManager.AlterPartDefinition("ExternalCssFont", builder => builder
+            await _contentDefinitionManager.AlterPartDefinitionAsync("ExternalCssFont", builder => builder
                 .WithField("Family", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Family")
@@ -223,7 +224,7 @@ namespace Etch.OrchardCore.Fonts
                 )
             );
 
-            _contentDefinitionManager.AlterPartDefinition("ExternalJsFont", builder => builder
+            await _contentDefinitionManager.AlterPartDefinitionAsync("ExternalJsFont", builder => builder
                 .WithField("Family", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Family")
